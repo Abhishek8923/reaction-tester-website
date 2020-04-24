@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>reaction tester</title>
+	<style type="text/css">
+		#square{
+			background-color: red;
+			width: 200px;
+			height: 200px;
+			display: none;
+			position: relative;
+		}
+	</style>
+
+</head>
+<body>
+	<h1>reaction tester by ABHISHEK !!</h1>
+
+	<p>time taken=<span id="text"></span></p>
+<div id ="square">
+	
+</div>
+<script type="text/javascript">
+	var start =new Date().getTime()//declared a variable start which start the time count
+	function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split("");//split the string letters 
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];}//add random values to color variable
+           
+    return color;
+
+    }
+
+	 function shapeappear(){
+	 	var top=Math.random()*400;//generate random no bw 0 to 400
+	 	var left=Math.random()*400//same as above
+	 	var width= (Math.random()*200)+100//give random no bw 100-200 
+	 	if (Math.random()>0.5) {//value of random is grater than 50 percent 
+	 		document.getElementById("square").style.borderRadius="50%";//make circle of random radius and color
+
+	 	}else{
+	 		document.getElementById("square").style.borderRadius="0";//make square of random radius
+	 	}
+	 	document.getElementById("square").style.backgroundColor=getRandomColor();//IT WILL CHANGE THE COLOR OF OUR IMAGE 
+	 	document.getElementById("square").style.top=top+"px";//it will generate random pixels for top position
+	 	document.getElementById("square").style.left=left+"px";//generate random px for left position og shape
+	 	document.getElementById("square").style.width=width+"px";//generate random width of square bw 0 to 400 px
+	 	document.getElementById("square").style.height=width+"px";//same as to keep the image as squre
+
+
+
+
+		document.getElementById("square").style.display="block";   //to get back our shape which we have defined in sqquare
+
+		start =new Date().getTime()//after shape reappear time will restart
+	}
+	function delay(){
+	setTimeout(shapeappear,Math.random()*2000);//to appear shape after random time bw 1 2 sec
+    }
+    delay();
+        document.getElementById('square').onclick=function(){//on click on image
+		document.getElementById("square").style.display="none";//TO dissapear the box none is used
+		var end=new Date().getTime();//time end here 
+		var ti=(end-start)/1000;//total time take is end time -start time div 1000 bcs its in sec
+		document.getElementById("text").innerHTML=ti+"sec";//
+		delay();
+
+	}
+	
+
+</script>
+</body>
+</html>
